@@ -1,48 +1,18 @@
 import Vue from 'vue';
-import sample from './data';
 import "core-js/fn/object/assign";
-import { populateAmenitiesAndPrices } from './helpers';
 
-let model = JSON.parse(window.vuebnb_listing_model);
-model = populateAmenitiesAndPrices(model);
-let url = model.images[0];
+import ListingPage from '../components/ListingPage.vue';
+import router from './router';
+
 var app = new Vue({ //the el property tells vue to mount itselt in the page
 	el: '#app',
-	data: Object.assign(model, {
-		headerImageStyle: {
-			'background-image': 'url(${ url })'
-		},
-		contracted: true,
-		modalOpen: false
-	}),
-	methods: {
-		escapeKeyListener: function(evt){
-			if (evt.keyCode === 27 && this.modalOpen) {
-        		this.modalOpen = false;
-      		}
-		}
-	},
-	watch: {
-		modalOpen: function(){
-			let className = 'modal-open';
-			if(this.modalOpen){
-				document.body.classList.add(className);
-			} else {
-				document.body.classList.remove(className);
-			}
-		}
-	},
-	created: function(){
-		document.addEventListener('keyup', this.escapeKeyListener);
-	},
-	destroyed: function(){
-		document.removeEventListener('keyup', this.escapeKeyListener);
-	}
+    render: h => h(ListingPage),
+    router
 });
 
-//console.log(app);
-console.log('model', model);
-console.log('url', url);
+console.log(app);
+//console.log('model', model);
+//console.log('url', url);
 /**
 Vue has dominion over elementts it mounts.
 So in our case, Vue will have dominion over the div with class container but

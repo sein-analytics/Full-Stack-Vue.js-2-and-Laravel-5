@@ -24,4 +24,18 @@ mix.js('resources/assets/js/app.js', 'public/js')
      	proxy: process.env.APP_URL,
      	open: false
      })
+	.options({
+		extractVueStyles: 'public/css/vue-styles.css'
+	})
 ;
+
+//When we move to SFCs we need to add the options tag to the mix and tell Webpack what to do with the styles
+//otherwise it will import the css into app.js as inline string
+
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.runtime.esm.js'
+        }
+    }
+});
