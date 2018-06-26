@@ -1,12 +1,12 @@
-import Vue from 'vue';
 import "core-js/fn/object/assign";
+import Vue from 'vue';
 
-import ListingPage from '../components/ListingPage.vue';
 import router from './router';
+import App from '../components/App.vue';
 
 var app = new Vue({ //the el property tells vue to mount itselt in the page
 	el: '#app',
-    render: h => h(ListingPage),
+    render: h => h(App),
     router
 });
 
