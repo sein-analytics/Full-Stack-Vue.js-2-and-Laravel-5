@@ -13,11 +13,11 @@
 <script>
 import { groupByCountry } from '../js/helpers';
 import ListingSummaryGroup from './ListingSummaryGroup.vue';
-import axios from 'axios';
-import routeMixin from '../js/route-mixin';
+//import axios from 'axios';
+//import routeMixin from '../js/route-mixin';
 
 export default {
-    mixins: [ routeMixin ],
+    /*mixins: [ routeMixin ],
     data() {
         return { listing_groups: [] }
     },
@@ -25,6 +25,11 @@ export default {
         assignData({ listings }) {
             this.listing_groups = groupByCountry(listings);
         },
+    },*/
+    computed: {
+        listing_groups() {
+            return groupByCountry(this.$store.state.listing_summaries);
+        }
     },
     components:{
         ListingSummaryGroup

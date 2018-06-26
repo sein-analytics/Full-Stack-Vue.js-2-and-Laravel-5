@@ -1,24 +1,28 @@
 <template>
     <div>
-        <header-image v-if="images[0]" :image-url="images[0]" @header-clicked="openModal"></header-image>
+        <header-image
+        :image-url="listing.images[0]"
+        @header-clicked="openModal"
+        :id="listing.id"
+        ></header-image>
         <div class="listing-container">
             <div class="heading">
-                <h1>{{ title }}</h1>
-                <p>{{ address }}</p>
+                <h1>{{ listing.title }}</h1>
+                <p>{{ listing.address }}</p>
             </div>
             <hr>
             <div class="about">
                 <h3>About this listing</h3>
-                <expandable-text>{{ about }}</expandable-text>
+                <expandable-text>{{ listing.about }}</expandable-text>
             </div>
             <div class="lists">
-                <feature-list title="Amenities" :items="amenities">
+                <feature-list title="Amenities" :items="listing.amenities">
                     <template slot-scope="amenity">
                         <i class="fa fa-lg" :class="amenity.icon"></i>
                         <span>{{ amenity.title }}</span>
                     </template>
                 </feature-list>
-                <feature-list title="Prices" :items="prices">
+                <feature-list title="Prices" :items="listing.prices">
                     <template slot-scope="price">
                         {{ price.title }}: <strong>{{ price.value }}</strong>
                     </template>
@@ -44,7 +48,7 @@ import FeatureList from './FeatureList.vue';
 import ExpandableText from './ExpandableText.vue';
 
 export default {
-    mixins: [routeMixin],
+    /*mixins: [routeMixin],
     data() {
         return {
             title: null,
@@ -54,7 +58,7 @@ export default {
             prices: [],
             images: []
         }
-    },
+    },*/
     components: {
     	ImageCarousel,
         ModalWindow,
@@ -62,10 +66,17 @@ export default {
         FeatureList,
         ExpandableText
     },
+    computed: {
+        listing() {
+            return populateAmenitiesAndPrices(
+                this.$store.getters.getListing(this.$route.params.listing)
+            );
+        }
+    },
     methods:{
-        assignData({ listing }){
+        /*assignData({ listing }){
             Object.assign(this.$data, populateAmenitiesAndPrices(listing));
-        },
+        },*/
 	    openModal(){
 	        this.$refs.imagemodal.modalOpen = true;
         }
