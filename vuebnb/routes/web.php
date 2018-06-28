@@ -1,5 +1,6 @@
 <?php
-use App\Listing;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +16,6 @@ Route::get('/', 'ListingController@get_home_web')->where('vue_capture', '[\/\w\.
 
 Route::get('/listing/{listing}', 'ListingController@get_listing_web');
 
-Route::get('/saved', 'ListingController@get_home_web');
+Route::get('/saved', 'ListingController@get_home_web')->middleware('auth');
+
+Auth::routes();

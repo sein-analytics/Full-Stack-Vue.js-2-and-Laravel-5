@@ -28,7 +28,7 @@ v-on: attach an event listener to the element - This directive takes an argument
 	<a v-on:click="doSomething"
 Also in index.html we used the v-bind directive with an argument to pass the css style to the element
 
-An example of using getter/setter iin Javascript
+An example of using getter/setter in Javascript
 var person = {
 	first = 'Samuel',
 	last = John,

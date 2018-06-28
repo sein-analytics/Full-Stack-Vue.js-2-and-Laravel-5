@@ -13,7 +13,8 @@ export default {
     props: ['id', 'button'],
     methods: {
         toggleSaved() {
-            this.$store.commit('toggleSaved', this.id);
+            //this.$store.commit('toggleSaved', this.id);
+            this.$store.dispatch('toggleSaved', this.id);
         }
     },
     computed: {
