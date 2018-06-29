@@ -41,13 +41,13 @@
         }
       },
       methods: {
-        addPost (eventData) {
+        addPost ({post}) {
           // sourceData.posts[postId] = post
           // this.thread.posts[postId] = postId using these the objects are not reactive
           // Vue cannot tell when objects are added or removed because of the limitations
           // of modern javascript
-          const post = eventData.post
-          const postId = eventData.post['.key']
+          // const post = eventData.post ...with {post}..destructuring we no longer need this
+          const postId = post['.key']
           this.$set(sourceData.posts, postId, post)
           this.$set(this.thread.posts, postId, postId)
           this.$set(sourceData.users[post.userId].posts, postId, postId)
