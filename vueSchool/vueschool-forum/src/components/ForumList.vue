@@ -1,9 +1,6 @@
 <template>
-    <div class="forum-list">
+    <div>
 
-        <h2 class="list-title">
-            <a href="#">Forums</a>
-        </h2>
         <forum-list-item
                 v-for="forum in forums"
                 :forum="forum"
