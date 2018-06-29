@@ -15,7 +15,6 @@
 
 <script>
     import ForumList from './ForumList'
-    import sourceData from '@/data'
     export default {
       components: {
         ForumList
@@ -28,7 +27,7 @@
       },
       computed: {
         categoryForums () {
-          return Object.values(sourceData.forums)
+          return Object.values(this.$store.state.forums)
             .filter(forum => forum.categoryId === this.category['.key'])
         }
       }
