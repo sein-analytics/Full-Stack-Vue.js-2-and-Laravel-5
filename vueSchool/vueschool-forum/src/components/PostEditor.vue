@@ -35,6 +35,7 @@
           }
           this.newPostText = ''
           this.$emit('save', {post})
+          this.$store.dispatch('createPost', post)
         }
       }
     }

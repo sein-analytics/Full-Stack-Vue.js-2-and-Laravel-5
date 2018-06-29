@@ -50,10 +50,7 @@
           // Vue cannot tell when objects are added or removed because of the limitations
           // of modern javascript
           // const post = eventData.post ...with {post}..destructuring we no longer need this
-          const postId = post['.key']
-          this.$set(this.$store.state.posts, postId, post)
-          this.$set(this.thread.posts, postId, postId)
-          this.$set(this.$store.state.users[post.userId].posts, postId, postId)
+          // this.$store.dispatch('createPost', post)
         }
       }
     }
