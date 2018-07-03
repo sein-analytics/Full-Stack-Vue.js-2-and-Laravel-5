@@ -41,6 +41,12 @@ export default new Router({
       props: true
     },
     {
+      path: '/me/edit',
+      name: 'ProfileEdit',
+      component: Profile,
+      props: {edit: true} // this is how we set a prop that is passed to a state
+    },
+    {
       path: '*',
       name: 'NotFound',
       component: NotFound
