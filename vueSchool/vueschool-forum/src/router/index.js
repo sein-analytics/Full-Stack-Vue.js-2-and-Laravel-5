@@ -6,6 +6,7 @@ import NotFound from '@/pages/PageNotFound'
 import Category from '@/pages/PageCategory'
 import Forum from '@/pages/PageForum'
 import Profile from '@/pages/PageProfile'
+import ThreadCreate from '@/pages/PageThreadCreate'
 
 Vue.use(Router)
 
@@ -26,6 +27,12 @@ export default new Router({
       path: '/forum/:id',
       name: 'Forum',
       component: Forum,
+      props: true
+    },
+    { // We put this route above /thread/:id because the router matches route from top-to-bottom
+      path: '/thread/create/:forumId',
+      name: 'ThreadCreate',
+      component: ThreadCreate,
       props: true
     },
     {
