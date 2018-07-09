@@ -78,7 +78,7 @@
             }) */
         },
         persist () {
-          return this.update ? this.update() : this.create()
+          return this.isUpdate ? this.update() : this.create()
         }
       }
     }
