@@ -5,7 +5,8 @@
             <a href="#">
                 <img class="avatar-large" :src="user.avatar" alt="">
             </a>
-            <p class="desktop-only text-small">{{userPostCount}}</p>
+            <p class="desktop-only text-small">{{userThreadsCount}} threads</p>
+            <p class="desktop-only text-small">{{userPostCount}} posts</p>
         </div>
         <div class="post-content">
             <!-- v-if on a template element serves as an invisible wrapper -->
@@ -54,6 +55,9 @@
         },
         userPostCount () {
           return this.$store.getters.userPostsCount(this.post.userId)
+        },
+        userThreadsCount () {
+          return this.$store.getters.userThreadsCount(this.post.userId)
         }
       }
     }
